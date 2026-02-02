@@ -43,9 +43,6 @@ param autoUpgradeClusterResource bool = false
 @description('Enable automatic logon into LocalBox Virtual Machine')
 param vmAutologon bool = true
 
-@description('Name of the NAT Gateway')
-param natGatewayName string = 'LocalBox-NatGateway'
-
 @description('The size of the Virtual Machine')
 @allowed([
   'Standard_E32s_v5'
@@ -65,6 +62,9 @@ param tags object = {
   Project: 'jumpstart_LocalBox'
 }
 
+@description('Set to true if deploying on physical hardware')
+param physicalDeployment bool = false
+
 @description('Region to register Azure Local instance in. This is the region where the Azure Local instance resources will be created. The region must be one of the supported Azure Local regions.')
 @allowed([
   'australiaeast'
@@ -76,7 +76,8 @@ param tags object = {
   'japaneast'
   'centralindia'
 ])
-param azureLocalInstanceLocation string = 'southcentralus'
+param azureLocalInstanceLocation string = 'australiaeast'
+
 
 // if governResourceTags is true, add the following tags
 var resourceTags = governResourceTags ? union(tags, {
@@ -96,13 +97,13 @@ module mgmtArtifactsAndPolicyDeployment 'mgmt/mgmtArtifacts.bicep' = {
   }
 }
 
-module networkDeployment 'network/network.bicep' = {
+
+module networkDeployment 'network/network.bicep' = if (!physicalDeployment) {
   name: 'networkDeployment'
   params: {
     deployBastion: deployBastion
     location: location
     resourceTags: resourceTags
-    natGatewayName: natGatewayName
   }
 }
 
@@ -114,7 +115,7 @@ module storageAccountDeployment 'mgmt/storageAccount.bicep' = {
   }
 }
 
-module hostDeployment 'host/host.bicep' = {
+module hostDeployment 'host/host.bicep' = if (!physicalDeployment) {
   name: 'hostVmDeployment'
   params: {
     vmSize: vmSize
