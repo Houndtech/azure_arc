@@ -5,7 +5,7 @@ $ErrorActionPreference = "Stop"
 $ProgressPreference = 'SilentlyContinue'
 
 # Set paths
-$Env:LocalBoxDir = "C:\LocalBox"
+$Env:LocalBoxDir = "E:\LocalBox"
 
 # Import Configuration Module
 $LocalBoxConfig = Import-PowerShellDataFile -Path $Env:LocalBoxConfigFile

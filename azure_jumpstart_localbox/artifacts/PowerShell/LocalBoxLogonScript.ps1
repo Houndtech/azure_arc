@@ -70,7 +70,7 @@ $shortcut.Save()
 Write-Host 'Creating Hyper-V Shortcut'
 Copy-Item -Path 'C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Administrative Tools\Hyper-V Manager.lnk' -Destination 'C:\Users\All Users\Desktop' -Force
 
-#############################################################
+<#############################################################
 # Configure Windows Terminal as the default terminal application
 #############################################################
 
@@ -95,7 +95,7 @@ foreach ($extension in $LocalBoxConfig.VSCodeExtensions) {
     code --install-extension $extension 2>&1 | Out-File -Append -FilePath ($LocalBoxConfig.Paths.LogsDir + "\Tools.log")
     $WarningPreference = "Continue"
 }
-
+#>
 #####################################################################
 # Configure virtualization infrastructure
 #####################################################################

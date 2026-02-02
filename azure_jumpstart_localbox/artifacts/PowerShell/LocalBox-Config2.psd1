@@ -42,19 +42,19 @@
 
     MgmtHostConfig = @{
         Hostname = "AzLMGMT"
-        IP       = "192.168.0.11/24"
+        IP       = "192.168.1.11/24"
     }
 
     NodeHostConfig = @(
         @{
             Hostname    = "AzLHOST1"
-            IP          = "192.168.0.12/24"
+            IP          = "192.168.1.12/24"
             StorageAIP  = "10.71.1.10"
             StorageBIP  = "10.71.2.10"
         },
         @{
             Hostname    = "AzLHOST2"
-            IP          = "192.168.0.13/24"
+            IP          = "192.168.1.13/24"
             StorageAIP  = "10.71.1.11"
             StorageBIP  = "10.71.2.11"
         }
@@ -82,8 +82,8 @@
     GUIProductKey                        = "WX4NM-KYWYW-QJJR4-XV3QB-6VM33"        # Product key for Windows Server 2019 (Desktop Experience) Datacenter Installation
 
     # SDN Lab Domain
-    SDNDomainFQDN                        = "altmanitlabs.com"                      # Limit name (not the .com) to 14 characters as the name will be used as the NetBIOS name.
-    DCName                               = "LabDC"                          # Name of the domain controller virtual machine (limit to 14 characters)
+    SDNDomainFQDN                        = "jumpstart.local"                      # Limit name (not the .com) to 14 characters as the name will be used as the NetBIOS name.
+    DCName                               = "jumpstartdc"                          # Name of the domain controller virtual machine (limit to 14 characters)
 
     # NAT Configuration
     natHostSubnet                        = "192.168.128.0/24"
@@ -112,22 +112,22 @@
     S2D_Disk_Size                        = 170GB                                    # Disk size for each of the 4 dynamic VHD disks attached to the 3 AzSHOST VMs that will be used to create the SDNCLUSTER
 
     # Physical Host Internal IP
-    PhysicalHostInternalIP               = "192.168.0.20"                          # IP Address assigned to Internal Switch vNIC in a Single Host Configuration
+    PhysicalHostInternalIP               = "192.168.1.20"                          # IP Address assigned to Internal Switch vNIC in a Single Host Configuration
 
     # SDN Lab DNS
-    SDNLABDNS                            = "192.168.0.254"
+    SDNLABDNS                            = "192.168.1.254"
 
     # SDN Lab Gateway
-    SDNLABRoute                          = "192.168.0.1"
+    SDNLABRoute                          = "192.168.1.1"
 
     # Management IPs for Console and Domain Controller
-    DCIP                                 = "192.168.0.254/24"
-    WACIP                                = "192.168.0.9/24"
+    DCIP                                 = "192.168.1.254/24"
+    WACIP                                = "192.168.1.9/24"
     WACMAC                               = "10155D010B00"
 
     # Router Config
     BGPRouterName                        = "vm-router"
-    BGPRouterIP_MGMT                     = "192.168.0.1/24"
+    BGPRouterIP_MGMT                     = "192.168.1.1/24"
     BGPRouterIP_ProviderNetwork          = "172.16.0.1/24"
     BGPRouterIP_VLAN110                  = "10.10.0.1/24"
     BGPRouterIP_VLAN200                  = "192.168.200.1/24"
@@ -144,7 +144,7 @@
     StorageBVLAN                         = 712
 
     # Subnets
-    MGMTSubnet                           = "192.168.0.0/24"
+    MGMTSubnet                           = "192.168.1.0/24"
     storageAsubnet                       = "255.255.255.0"
     storageBsubnet                       = "255.255.255.0"
 
@@ -177,10 +177,10 @@
     # rbDHCPExclusionEnd                   = "192.168.200.209"
     dcVLAN200IP                          = "192.168.200.205"
     rbSubnetMask                         = "255.255.255.0"
-    clusterIpRangeStart                  = "192.168.0.100"
-    clusterIpRangeEnd                    = "192.168.0.199"
+    clusterIpRangeStart                  = "192.168.1.100"
+    clusterIpRangeEnd                    = "192.168.1.199"
     vmGateway                            = "192.168.200.1"
     vmIpPrefix                           = "192.168.200.0/24"
-    vmDNS                                = "192.168.0.254"
+    vmDNS                                = "192.168.1.254"
     vmVLAN                               = "200"
 }

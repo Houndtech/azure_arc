@@ -88,12 +88,12 @@ Write-Host "IsAzureDeployment: $IsAzureDeployment"
 #######################################################################
 ## Setup basic environment
 #######################################################################
-# Copy PowerShell Profile and Reload
+<# Copy PowerShell Profile and Reload
 Invoke-WebRequest ($templateBaseUrl + "artifacts/PowerShell/PSProfile.ps1") -OutFile $PsHome\Profile.ps1
 .$PsHome\Profile.ps1
-
+#>
 # Creating LocalBox path
-$LocalBoxPath = "C:\LocalBox"
+$LocalBoxPath = "E:\LocalBox"
 [System.Environment]::SetEnvironmentVariable('LocalBoxDir', $LocalBoxPath, [System.EnvironmentVariableTarget]::Machine)
 New-Item -Path $LocalBoxPath -ItemType directory -Force
 
@@ -188,7 +188,7 @@ $null = Set-AzResourceGroup -ResourceGroupName $resourceGroup -Tag $tags
 ##############################################################
 # Installing PowerShell 7
 ##############################################################
-
+<#
 Write-Host "Installing PowerShell 7..."
 
 $ProgressPreference = 'SilentlyContinue'
@@ -200,7 +200,7 @@ Start-Process msiexec.exe -Wait -ArgumentList '/I PowerShell7.msi /quiet ADD_EXP
 Remove-Item .\PowerShell7.msi
 
 Copy-Item $PsHome\Profile.ps1 -Destination "C:\Program Files\PowerShell\7\"
-
+#>
 # Disabling Windows Server Manager Scheduled Task
 Write-Host "Disabling Windows Server Manager scheduled task."
 Get-ScheduledTask -TaskName ServerManager | Disable-ScheduledTask
@@ -381,7 +381,7 @@ Add-MpPreference -ExclusionExtension ".vmgs"
 Add-MpPreference -ExclusionPath "%ProgramData%\Microsoft\Windows\Hyper-V"
 Add-MpPreference -ExclusionPath "%Public%\Documents\Hyper-V\Virtual Hard Disks"
 Add-MpPreference -ExclusionPath "%SystemDrive%\ProgramData\Microsoft\Windows\Hyper-V\Snapshots"
-Add-MpPreference -ExclusionPath "C:\LocalBox\VHD"
+Add-MpPreference -ExclusionPath "E:\LocalBox\VHD"
 Add-MpPreference -ExclusionPath "V:\VMs"
 Add-MpPreference -ExclusionProcess  "%systemroot%\System32\Vmms.exe"
 Add-MpPreference -ExclusionProcess  "%systemroot%\System32\Vmwp.exe"
