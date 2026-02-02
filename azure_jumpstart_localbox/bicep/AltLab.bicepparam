@@ -1,8 +1,8 @@
 using './main.bicep'
 
-param githubAccount = 'microsoft'
-param githubBranch = 'main'
-param location = 'northeurope'
+param githubAccount = 'houndtech'
+param githubBranch = 'main2601-local'
+param location = 'southcentralus'
 
 param rdpPort = '3389'
 param vmSize = 'Standard_E32s_v6'

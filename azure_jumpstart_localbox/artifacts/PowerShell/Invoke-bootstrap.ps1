@@ -1,12 +1,14 @@
 # Set variables
-$downloadUrl = "https://raw.githubusercontent.com/janegilring/azure_arc/refs/heads/localbox_sff/azure_jumpstart_localbox/artifacts/PowerShell/Bootstrap.ps1"
-$scriptPath = "C:\Temp\Bootstrap.ps1"
+
+$downloadUrl = "https://raw.githubusercontent.com/Houndtech/azure_arc/refs/heads/2601-local/azure_jumpstart_arcbox/artifacts/Bootstrap.ps1"
+
+$scriptPath = "E:\Temp\Bootstrap.ps1"
 
 # TODO: Update parameters as needed
 
 # Ensure C:\Temp exists
-if (-not (Test-Path -Path 'C:\Temp')) {
-    New-Item -Path 'C:\Temp' -ItemType Directory | Out-Null
+if (-not (Test-Path -Path 'E:\Temp')) {
+    New-Item -Path 'E:\Temp' -ItemType Directory | Out-Null
 }
 
 # Download the script
@@ -15,15 +17,15 @@ Invoke-WebRequest -Uri $downloadUrl -OutFile $scriptPath
 $parameters = @{
     adminUsername             = "Administrator"
     adminPassword             = "U2lra2VyOTA="  # Base64-encoded string
-    spnProviderId             = "aa8675e0-63de-4c2e-a00c-24197a131d15"
-    tenantId               = "2ffc1db7-b373-4be0-a5ec-f54edd5bf695"
-    subscriptionId            = "608937df-4e8f-4dc5-8bc6-16f30646ebd9"
-    resourceGroup             = "jan-localbox-sff-rg"
-    azureLocation             = "swedencentral"
-    azureLocalInstanceLocation= "australiaeast"
+    spnProviderId             = "8159cc00-0022-4179-9265-ed3bc870ca49"
+    tenantId                  = "9e77cf13-c26f-4ef3-8bca-fbce851162e8"
+    subscriptionId            = "38098a00-458f-4939-aaa2-71558d60c1d9"
+    resourceGroup             = "LocalLab26"
+    azureLocation             = "southcentralus"
+    azureLocalInstanceLocation= "southcentralus"
     stagingStorageAccountName = "localbox75astfdvn2zso"
     workspaceName             = "LocalBox-Workspace"
-    templateBaseUrl           = "https://raw.githubusercontent.com/janegilring/azure_arc/localbox_sff/azure_jumpstart_localbox/"
+    templateBaseUrl           = "https://github.com/Houndtech/azure_arc/tree/2601-local/azure_jumpstart_arcbox"
     registerCluster           = "true"
     deployAKSHCI              = "false"
     deployResourceBridge      = "true"

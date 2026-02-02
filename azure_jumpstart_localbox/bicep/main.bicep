@@ -76,7 +76,7 @@ param tags object = {
   'japaneast'
   'centralindia'
 ])
-param azureLocalInstanceLocation string = 'australiaeast'
+param azureLocalInstanceLocation string = 'southcentralus'
 
 // if governResourceTags is true, add the following tags
 var resourceTags = governResourceTags ? union(tags, {
