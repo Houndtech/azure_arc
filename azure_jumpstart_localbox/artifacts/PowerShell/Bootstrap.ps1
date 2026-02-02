@@ -72,7 +72,7 @@ Invoke-WebRequest ($templateBaseUrl + "artifacts/PowerShell/PSProfile.ps1") -Out
 .$PsHome\Profile.ps1
 
 # Creating LocalBox path
-$LocalBoxPath = "C:\LocalBox"
+$LocalBoxPath = "E:\LocalBox"
 [System.Environment]::SetEnvironmentVariable('LocalBoxDir', $LocalBoxPath, [System.EnvironmentVariableTarget]::Machine)
 New-Item -Path $LocalBoxPath -ItemType directory -Force
 
@@ -96,10 +96,11 @@ Start-Transcript -Path "$($LocalBoxConfig.Paths["LogsDir"])\Bootstrap.log"
 #################################################################################
 ## Setup host infrastructure and apps
 #################################################################################
-# Extending C:\ partition to the maximum size
+<# ORIGINAL: "Extending C:\ partition to the maximum size"
+Physical host - not needed.
 Write-Host "Extending C:\ partition to the maximum size"
 Resize-Partition -DriveLetter C -Size $(Get-PartitionSupportedSize -DriveLetter C).SizeMax
-
+#>
 Write-Host "Downloading Azure Local configuration scripts"
 Invoke-WebRequest "https://raw.githubusercontent.com/Azure/arc_jumpstart_docs/main/img/wallpaper/localbox_wallpaper_dark.png" -OutFile $LocalBoxPath\wallpaper.png
 Invoke-WebRequest https://aka.ms/wacdownload -OutFile "$($LocalBoxConfig.Paths["WACDir"])\WindowsAdminCenter.msi"

@@ -4,19 +4,19 @@
 
     # LocalBox Folders
     Paths = @{
-        DSCDir = "C:\LocalBox\DSC"
-        TestsDir = "C:\LocalBox\Tests"
-        VMDir = "C:\LocalBox\Virtual Machines"
-        LogsDir = "C:\LocalBox\Logs"
-        IconDir = "C:\LocalBox\Icons"
-        VHDDir = "C:\LocalBox\VHD"
-        SDNDir = "C:\LocalBox\SDN"
-        KVDir = "C:\LocalBox\KeyVault"
-        WACDir = "C:\LocalBox\Windows Admin Center"
-        AgentScriptDir = "C:\LocalBox\agentScript"
-        ToolsDir = "C:\Tools"
-        TempDir = "C:\Temp"
-        VMPath = "C:\VMs"
+        DSCDir = "E:\LocalLab\DSC"
+        TestsDir = "E:\LocalLab\Tests"
+        VMDir = "E:\LocalLab\Virtual Machines"
+        LogsDir = "E:\LocalLab\Logs"
+        IconDir = "E:\LocalLab\Icons"
+        VHDDir = "E:\LocalLab\VHD"
+        SDNDir = "E:\LocalLab\SDN"
+        KVDir = "E:\LocalLab\KeyVault"
+        WACDir = "E:\LocalLab\Windows Admin Center"
+        AgentScriptDir = "E:\LocalLab\agentScript"
+        ToolsDir = "E:\Tools"
+        TempDir = "E:\Temp"
+        VMPath = "E:\VMs"
     }
 
     PowerShellModulesList = @(
@@ -35,10 +35,10 @@
         'ms-kubernetes-tools.vscode-kubernetes-tools'
     )
 
-    HostVMDriveLetter = "V"
-    HostVMPath        = "V:\VMs"                              # This value controls the path where the Nested VMs will be stored on all hosts.
-    guiVHDXPath       = "C:\LocalBox\VHD\gui.vhdx"              # This value controls the location of the GUI VHDX.
-    AzLocalVHDXPath    = "C:\LocalBox\VHD\AzL-node.vhdx"           # This value controls the location of the Azure Local VHDX. \
+    HostVMDriveLetter = "E"
+    HostVMPath        = "E:\VMs"                              # This value controls the path where the Nested VMs will be stored on all hosts.
+    guiVHDXPath       = "E:\LocalLab\VHD\gui.vhdx"              # This value controls the location of the GUI VHDX.
+    AzLocalVHDXPath    = "E:\LocalLab\VHD\AzL-node.vhdx"           # This value controls the location of the Azure Local VHDX. \
 
     MgmtHostConfig = @{
         Hostname = "AzLMGMT"
@@ -64,9 +64,9 @@
     SDNAdminPassword                     = '%staging-password%'                  # Do not change - this value is replaced during Bootstrap with the password supplied in the ARM deployment
 
     # VM Configuration
-    NestedVMMemoryinGB                   = 96GB                                 # This value controls the amount of RAM for each Nested Hyper-V Host (AzSHOST1-2).
+    NestedVMMemoryinGB                   = 64GB                                 # This value controls the amount of RAM for each Nested Hyper-V Host (AzSHOST1-2).
     AzSMGMTMemoryinGB                    = 28GB                                  # This value controls the amount of RAM for the AzSMGMT Nested VM which contains only the Console, Router, Admincenter, and DC VMs.
-    AzSMGMTProcCount                     = 20
+    AzSMGMTProcCount                     = 8
     InternalSwitch                       = "InternalSwitch"                      # Name of internal switch that the LocalBox VMs will use in Single Host mode.
     FabricSwitch                         = "vSwitch-Fabric"
     FabricNIC                            = "FABRIC"
