@@ -1,8 +1,8 @@
 # Set variables
 
-$downloadUrl = "https://raw.githubusercontent.com/Houndtech/azure_arc/refs/heads/2601-local/azure_jumpstart_arcbox/artifacts/Bootstrap.ps1"
+#$downloadUrl = "https://raw.githubusercontent.com/Houndtech/azure_arc/refs/heads/2601-local/azure_jumpstart_arcbox/artifacts/Bootstrap.ps1"
 
-$scriptPath = "E:\Temp\Bootstrap.ps1"
+$scriptPath = ".\Bootstrap.ps1"
 
 # TODO: Update parameters as needed
 
@@ -25,7 +25,7 @@ $parameters = @{
     azureLocalInstanceLocation= "southcentralus"
     stagingStorageAccountName = "localboxvgjzh35vpix6g"
     workspaceName             = "LocalBox-Workspace"
-    templateBaseUrl           = "https://github.com/Houndtech/azure_arc/tree/localbox_sff/azure_jumpstart_localbox"
+    templateBaseUrl           = "https://raw.githubusercontent.com/Houndtech/azure_arc/localbox_sff/azure_jumpstart_localbox/"
    
     deploySDNLab              = "true"
     registerCluster           = "true"
